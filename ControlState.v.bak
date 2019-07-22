@@ -1,0 +1,15 @@
+module ControlState(reset,clock,out,in);
+input reset,clock
+input [1:0]in;
+
+output [1:0];
+
+always@(posedge clock) begin
+
+
+end
+
+
+
+
+endmodule

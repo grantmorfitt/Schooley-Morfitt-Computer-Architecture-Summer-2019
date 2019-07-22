@@ -1,0 +1,98 @@
+module GPIO_Peripheral_TB();
+
+reg Read_In,Load_Out,Load_DIR,clk,reset;
+reg [7:0] addressbus;
+// [15:0] databus,IO;  // can be used as input or output
+
+reg [15:0] data_on_inout;
+tri [15:0] inout_bus;
+reg [15:0] inout_bus_pin_direction;
+//wire [15:0] IO_out;
+
+reg [15:0] data_on_databus;
+tri [15:0] databus;
+reg [15:0] databus_pin_direction;
+//wire [15:0] databus_out;
+
+assign inout_bus[0] = inout_bus_pin_direction[0] ? data_on_inout[0] : 1'bz; //IO_out[0];
+assign inout_bus[1] = inout_bus_pin_direction[1] ? data_on_inout[1] : 1'bz; //IO_out[1];
+assign inout_bus[2] = inout_bus_pin_direction[2] ? data_on_inout[2] : 1'bz; //IO_out[2];
+assign inout_bus[3] = inout_bus_pin_direction[3] ? data_on_inout[3] : 1'bz; //IO_out[3];
+assign inout_bus[4] = inout_bus_pin_direction[4] ? data_on_inout[4] : 1'bz; //IO_out[4];
+assign inout_bus[5] = inout_bus_pin_direction[5] ? data_on_inout[5] : 1'bz; //IO_out[5];
+assign inout_bus[6] = inout_bus_pin_direction[6] ? data_on_inout[6] : 1'bz; //IO_out[6];
+assign inout_bus[7] = inout_bus_pin_direction[7] ? data_on_inout[7] : 1'bz; //IO_out[7];
+assign inout_bus[8] = inout_bus_pin_direction[8] ? data_on_inout[8] : 1'bz; //IO_out[8];
+assign inout_bus[9] = inout_bus_pin_direction[9] ? data_on_inout[9] : 1'bz; //IO_out[9];
+assign inout_bus[10] = inout_bus_pin_direction[10] ? data_on_inout[10] : 1'bz; //IO_out[10];
+assign inout_bus[11] = inout_bus_pin_direction[11] ? data_on_inout[11] : 1'bz; //IO_out[11];
+assign inout_bus[12] = inout_bus_pin_direction[12] ? data_on_inout[12] : 1'bz; //IO_out[12];
+assign inout_bus[13] = inout_bus_pin_direction[13] ? data_on_inout[13] : 1'bz; //IO_out[13];
+assign inout_bus[14] = inout_bus_pin_direction[14] ? data_on_inout[14] : 1'bz; //IO_out[14];
+assign inout_bus[15] = inout_bus_pin_direction[15] ? data_on_inout[15] : 1'bz; //IO_out[15];
+
+assign databus[0] = databus_pin_direction[0] ? data_on_databus[0] : 1'bz; //IO_out[0];
+assign databus[1] = databus_pin_direction[1] ? data_on_databus[1] : 1'bz; //IO_out[1];
+assign databus[2] = databus_pin_direction[2] ? data_on_databus[2] : 1'bz; //IO_out[2];
+assign databus[3] = databus_pin_direction[3] ? data_on_databus[3] : 1'bz; //IO_out[3];
+assign databus[4] = databus_pin_direction[4] ? data_on_databus[4] : 1'bz; //IO_out[4];
+assign databus[5] = databus_pin_direction[5] ? data_on_databus[5] : 1'bz; //IO_out[5];
+assign databus[6] = databus_pin_direction[6] ? data_on_databus[6] : 1'bz; //IO_out[6];
+assign databus[7] = databus_pin_direction[7] ? data_on_databus[7] : 1'bz; //IO_out[7];
+assign databus[8] = databus_pin_direction[8] ? data_on_databus[8] : 1'bz; //IO_out[8];
+assign databus[9] = databus_pin_direction[9] ? data_on_databus[9] : 1'bz; //IO_out[9];
+assign databus[10] = databus_pin_direction[10] ? data_on_databus[10] : 1'bz; //IO_out[10];
+assign databus[11] = databus_pin_direction[11] ? data_on_databus[11] : 1'bz; //IO_out[11];
+assign databus[12] = databus_pin_direction[12] ? data_on_databus[12] : 1'bz; //IO_out[12];
+assign databus[13] = databus_pin_direction[13] ? data_on_databus[13] : 1'bz; //IO_out[13];
+assign databus[14] = databus_pin_direction[14] ? data_on_databus[14] : 1'bz; //IO_out[14];
+assign databus[15] = databus_pin_direction[15] ? data_on_databus[15] : 1'bz; //IO_out[15];
+
+GPIO_Peripheral dut(Read_In,Load_Out,Load_DIR,clk,reset,addressbus,databus,inout_bus);
+
+
+initial begin
+        clk <= 1'b0;
+        forever
+        #10 clk = ~clk;
+		  
+		  reset <=1'b1; // reset all registers
+		  
+	end
+	
+initial begin
+
+reset <= 1'b0;
+Read_In <= 1'b1;
+Load_Out <= 1'b1;
+Load_DIR <= 1'b1;
+
+
+addressbus <= 8'b00000100;
+inout_bus_pin_direction <= 16'b1111111111111111;
+databus_pin_direction <= 16'bz;
+data_on_inout <= 16'b0000000000000011;
+
+
+#50
+
+addressbus <= 8'b00000110;
+inout_bus_pin_direction <= 16'bz;
+databus_pin_direction <= 16'b1111111111111111;
+data_on_databus <= 16'b0000000000000001;
+
+#50
+
+addressbus <= 8'b00000101;
+inout_bus_pin_direction <= 16'bz;
+databus_pin_direction <= 16'b1111111111111111;
+data_on_databus <= 16'b0000000000001000;
+
+
+
+
+#500 $stop;
+
+	end
+
+endmodule

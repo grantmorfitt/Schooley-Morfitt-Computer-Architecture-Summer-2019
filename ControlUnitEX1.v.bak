@@ -1,0 +1,15 @@
+module ControlUnitEX1(status,ControlWord,IR);
+input [3:0] status;
+input [15:0]IR;
+
+output reg [46:0] ControlWord;
+
+always begin
+
+		case (IR[15])
+
+		endcase
+
+end
+
+endmodule

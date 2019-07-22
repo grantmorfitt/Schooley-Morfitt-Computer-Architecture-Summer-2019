@@ -1,0 +1,11 @@
+module register_file_tb;
+
+reg clock, reset, write;
+reg [3:0] AA, BA, DA;
+reg [15:0] D;
+wire [15:0] A, B, R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15;
+
+register_file dut( 
+
+
+)

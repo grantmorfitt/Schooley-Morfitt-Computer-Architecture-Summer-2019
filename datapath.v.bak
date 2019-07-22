@@ -1,0 +1,44 @@
+module datapath(AA,BA,DA,WR,FS,C0,reset,status,clk,R0,R1,R2,R3,R4,R5,R6,R7,R8,R9,RA,RB,RC,RD,RE,RF);
+
+//----------Input | Outputs----------
+input [3:0] AA,BA,DA;
+input [4:0] FS;
+input C0,reset,clk,WR;
+output [3:0]status;
+output [15:0] R0,R1,R2,R3,R4,R5,R6,R7,R8,R9,RA,RB,RC,RD,RE,RF; //Visualization of the individual registers
+//-----------------------------------
+
+wire [15:0] A,B,datapath; // ALU | REG datapath wires
+
+
+ALU_LEGv8 ALU(A, B, FS, C0, datapath, status);
+
+register_file_main Register(
+	WR,
+	clk,
+	reset,
+	AA,
+	BA,
+	datapath,
+	DA,
+	A,
+	B,
+	R0,
+	R1,
+	R2,
+	R3,
+	R4,
+	R5,
+	R6,
+	R7,
+	R8,
+	R9,
+	RA,
+	RB,
+	RC,
+	RD,
+	RE,
+	RF);
+	
+endmodule
+

@@ -1,0 +1,7 @@
+module ControlUnitIF(ControlWord);
+
+output [34:0] ControlWord;
+
+assign ControlWord <= {2'b01,4'bxxxx,4'bxxxx,4'bxxxx,4'bxxxxx,	1'bx, 1'bx,1'bx,1'bx,1'bx,1'bx,2'b00,1'b1,1'b0,1'bxx,1'b0,1'b0,1'b0,16'bx,1'b0}
+
+endmodule
