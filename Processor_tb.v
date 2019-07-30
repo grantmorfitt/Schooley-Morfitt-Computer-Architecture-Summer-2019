@@ -26,7 +26,7 @@ reset <= 1'b1;
 reset <=1'b0;
 
 
-#1000 $stop;
+#3000 $stop;
 end
 
 

@@ -1,4 +1,4 @@
-module Processor(clk,reset,R0,R1,R2,R3,R4,R5,R6,R7,PS_VIZ,databus_VIZ,addressbuz_VIZ,WR_VIZ,ControlWord_VIZ,K_VIZ,AA_VIZ,BA_VIZ,DA_VIZ,status_VIZ,FS_VIZ,C0_VIZ,PCSEL_VIZ,EN_ALU_VIZ,EN_ADDRESS_ALU_VIZ,IR_EN_VIZ,EN_ADDRESS_PC_VIZ,EN_PC_VIZ,MW_VIZ,MR_VIZ,BSEL_VIZ,ROM_EN_VIZ,EN_B_VIZ);
+module Processor(clk,reset,R0,R1,R2,R3,R4,R5,R6,R7/*,PS_VIZ*/,databus_VIZ,addressbuz_VIZ/*,WR_VIZ,ControlWord_VIZ,K_VIZ,AA_VIZ,BA_VIZ,DA_VIZ,status_VIZ,FS_VIZ,C0_VIZ,PCSEL_VIZ,EN_ALU_VIZ,EN_ADDRESS_ALU_VIZ,IR_EN_VIZ,EN_ADDRESS_PC_VIZ,EN_PC_VIZ,MW_VIZ,MR_VIZ,BSEL_VIZ,ROM_EN_VIZ,EN_B_VIZ*/);
 input clk,reset;
 output [15:0]R0,R1,R2,R3,R4,R5,R6,R7;
 wire [15:0] K;
@@ -9,7 +9,7 @@ wire [4:0]FS;
 wire C0,PCSEL,EN_ALU,EN_ADDRESS_ALU,IR_EN,EN_ADDRESS_PC,EN_PC,MW,MR,BSEL,ROM_EN,EN_B,WR;
 wire [1:0] PS;
 wire [15:0] IR;
-
+/*
 output [2:0]AA_VIZ,BA_VIZ,DA_VIZ;
 output [3:0] status_VIZ;
 output [4:0] FS_VIZ;
@@ -17,10 +17,10 @@ output [15:0] K_VIZ;
 output [1:0] PS_VIZ;
 output C0_VIZ,WR_VIZ,PCSEL_VIZ,EN_ALU_VIZ,EN_ADDRESS_ALU_VIZ,IR_EN_VIZ,EN_ADDRESS_PC_VIZ,EN_PC_VIZ,MW_VIZ,MR_VIZ,BSEL_VIZ,ROM_EN_VIZ,EN_B_VIZ;
 output [46:0] ControlWord_VIZ;
-
+*/
 output [15:0] addressbuz_VIZ;
 output [15:0]databus_VIZ;
-
+/*
 assign IR_VIZ = IR;
 assign AA_VIZ = AA;
 assign BA_VIZ = BA;
@@ -43,6 +43,7 @@ assign K_VIZ = K;
 assign ControlWord_VIZ = ControlWord;
 assign WR_VIZ = WR;
 assign PS_VIZ = PS;
+*/
 
 datapath datapathinst(addressbuz_VIZ,databus_VIZ,AA,BA,DA,WR,FS,C0,reset,status,clk,R0,R1,R2,R3,R4,R5,R6,R7,K,PCSEL,PS,EN_ALU,EN_ADDRESS_ALU,IR_EN,IR,EN_ADDRESS_PC,EN_PC,MW,MR,BSEL,ROM_EN,EN_B);
 

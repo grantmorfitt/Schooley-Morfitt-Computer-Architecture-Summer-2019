@@ -4,15 +4,16 @@ module rom(out, address);
   always @(address) //* begin // @(a)
   begin
      case (address)
-     // Address        Binary Instruction  // Assembly (optional)
-        8'h00:  out = 16'b1100000000000000; // LRI R0, 0
+        // Address      Binary Instruction  // Assembly (optional)
+      
+        8'h00:  out = 16'b1111100000000000; // LRI R7, 0
         8'h01:  out = 16'b1100100000000001; // LRI R1, 1
         8'h02:  out = 16'b1101000000000010; // LRI R2, 2
         8'h03:  out = 16'b1101100000000011; // LRI R3, 3
         8'h04:  out = 16'b1110000000000100; // LRI R4, 4
         8'h05:  out = 16'b1110100000000101; // LRI R5, 5
         8'h06:  out = 16'b1111000000000110; // LRI R6, 6
-        8'h07:  out = 16'b1111100000000111; // LRI R7, 7
+        8'h07:  out = 16'b1100000000000111; // LRI R0, 7
         8'h08:  out = 16'b0010100100001000; // ORI R1, 8 (R1 should be 9)
         8'h09:  out = 16'b0110100010011100; // ADD R2, R3, R4 (R2 should be 7)
         8'h0A:  out = 16'b0111000011011001; // SHL R3, R3 (R3 should be 6) **NOTE** EDITED [2:0] SHFTAMT.
@@ -24,7 +25,7 @@ module rom(out, address);
         // ... more instructions here
         8'hFF:  out = 16'b1001100000000000; // JMPI, 0
         default: out =16'b0000000000000000; // NOP
-		  
+          
      endcase
   end
 endmodule // rom_case
