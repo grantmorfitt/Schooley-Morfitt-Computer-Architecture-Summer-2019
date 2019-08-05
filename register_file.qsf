@@ -374,4 +374,7 @@ set_location_assignment PIN_A19 -to HEX3[2]
 set_location_assignment PIN_F15 -to HEX3[1]
 set_location_assignment PIN_B18 -to HEX3[0]
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity Lab3a_s1 -section_id Top
+set_global_assignment -name VERILOG_FILE quad_7seg_decoder.v
+set_global_assignment -name QIP_FILE ClockTest.qip
+set_global_assignment -name VERILOG_FILE ClockTest.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

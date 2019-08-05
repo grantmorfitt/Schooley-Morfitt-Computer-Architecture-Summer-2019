@@ -4,9 +4,7 @@ module rom(out, address);
   always @(address) //* begin // @(a)
   begin
      case (address)
-        // Address      Binary Instruction  // Assembly (optional)
-      
-        8'h00:  out = 16'b1111100000000000; // LRI R7, 0
+ 8'h00:  out = 16'b1111100000000000; // LRI R7, 0
         8'h01:  out = 16'b1100100000000001; // LRI R1, 1
         8'h02:  out = 16'b1101000000000010; // LRI R2, 2
         8'h03:  out = 16'b1101100000000011; // LRI R3, 3
@@ -23,9 +21,8 @@ module rom(out, address);
         8'h0E:  out = 16'b1010010001000001; // LD R4, 65 (R4 should be 9)
         8'h0F:  out = 16'b1011100100000000; // BRN R1, -15 (should be true and branch to 0 (15-15) which will restart the sequence)
         // ... more instructions here
-        8'hFF:  out = 16'b1001100000000000; // JMPI, 0
+        //8'hFF:  out = 16'b1001100000000000; // JMPI, 0
         default: out =16'b0000000000000000; // NOP
-          
      endcase
   end
 endmodule // rom_case

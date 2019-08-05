@@ -41,6 +41,7 @@ module GPIO_Board(
 	// input/output to GPIO1 for reading the switches and controlling the LEDs
 	inout wire [31:0] GPIO_1;
 	
+	
 	// create a 17 bit counter to manage the timing of displaying the information
 	// bits 16:14 will be used at the 3 bit row counter / signal multiplexer select
 	// bits 13:11 will be used to disable the row output right before and right after
