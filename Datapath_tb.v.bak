@@ -1,0 +1,39 @@
+module Datapath_tb;
+
+reg WR, C0, Reset, Clock;
+reg [3:0] SA, SB, DR;
+reg [4:0] FS;
+wire [3:0] status;
+wire [15:0] R0,R1,R2,R3,R4,R5,R6,R7,R8,R9,RA,RB,RC,RD,RE,RF;
+
+
+Datapath_Schooley dut (SA,SB,DR,WR,FS,C0,Reset,Clock,status,R0,R1,R2,R3,R4,R5,R6,R7,R8,R9,RA,RB,RC,RD,RE,RF);
+
+initial
+    begin
+        
+        clock <= 1'b0;
+        forever
+        #10 clock = ~clock;
+    end
+    initial
+    begin
+    // pulse reset
+    #2 Reset = 1'b1;
+    #5 Reset = 1'b0;
+    
+    end
+    
+    forever
+        begin
+        
+WR <= 1'b1;        
+FS <= 5'b00000;
+SA <= 4'b0000;
+SB <= 4'b0001;
+DR <= 4'b0000;
+
+#700 $stop;
+end
+
+endmodule

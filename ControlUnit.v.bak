@@ -1,0 +1,7 @@
+module ControlUnit(status,IR,ControlWord);
+
+
+
+
+endmodule
+

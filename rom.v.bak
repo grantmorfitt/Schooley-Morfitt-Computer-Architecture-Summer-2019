@@ -1,0 +1,20 @@
+module rom(out, address,en);
+	output reg [15:0] out;
+	input  [7:0] address;   
+	always @(address) begin
+		if (en) begin
+			case (address)
+				8'h00:  out = 16'b1101001010000000; // MOVZ X1, 1
+				8'h01:  out = 16'b1101001010000000; // MOVZ X2, 2
+				8'h02:  out = 16'b1000101100000010; // ADD X4, X1, X2
+				8'h03:  out = 16'b1111100000000001; // STUR X4, [XZR, 16]
+				8'h04:  out = 16'b1111100001000001; // LDUR X5, [XZR, 16]
+				8'h05:  out = 16'b1001010000000000; // BL 10
+				8'h06:  out = 16'b1011010100000000; // CBNZ X2, 1
+				8'h07:  out = 16'b0001010000000000; // B 1
+				8'h08:  out = 16'b1111111111111111; // B -7
+				default: out=16'bz; //BR XZR
+			endcase
+		end
+	end
+endmodule

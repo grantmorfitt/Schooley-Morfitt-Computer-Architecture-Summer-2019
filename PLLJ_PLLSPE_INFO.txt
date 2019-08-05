@@ -1,0 +1,5 @@
+PLL_Name	ClockTest:clk|altpll:altpll_component|ClockTest_altpll:auto_generated|pll1
+PLLJITTER	35
+PLLSPEmax	84
+PLLSPEmin	-53
+
